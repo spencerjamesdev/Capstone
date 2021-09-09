@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './App.css';
+import TitleBar from './Title Bar/TitleBar';
 
 
 class App extends Component {
@@ -9,7 +11,10 @@ class App extends Component {
 
     render(){
         return (
-            <h1>Friendly Reminder</h1>
+            <div className="container-fluid">
+                <TitleBar />
+            </div>
+            
         )
     }
 }
