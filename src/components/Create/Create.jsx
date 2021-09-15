@@ -14,9 +14,12 @@ class Create extends React.Component {
                 <input type="text" name="reminder_description" /><br></br>
 
                 <label for="recurrence">Recurrence: </label>
-                <input type="number" name="recurrence" /><br></br>
+                <input type="number" min="0" name="recurrence" /><br></br>
 
+                <label for="start_date">Start Date: </label>
+                <input type="date" name="start_date" /><br></br>
 
+                <button type="submit">Add Reminder</button>
             </form>
         )
     }
