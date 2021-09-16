@@ -1,27 +1,64 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavBar from './Nav Bar/NavBar';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './Home/Home';
 import Create from './Create/Create';
+import Login from './Login/Login';
+import Current from './Current/Current';
+import Calendar from './Calendar/Calendar';
+import jwtDecode from 'jwt-decode'
+import axios from 'axios';
+
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+    state = { }
 
+    componentDidMount() {
+        
+        const jwt = localStorage.getItem('token');
+    
+        console.log(jwt)
+        try{
+            const user = jwtDecode(jwt);
+            this.setState({user}, () => console.log(this.state))
+        } catch (err) {
+            console.log(err)
+        }
+        
+    }
     render(){
+        const user = this.state.user;
         return (
             <div className="container-fluid">
-                <NavBar />
+                <NavBar user={user}/>
                 <Switch>
                    <Route path="/home" exact component={Home} />
-                   {/* <Route path="/current" component={Current} />
-                   <Route path="/calendar" component={Calendar} /> */}
-                   <Route path="/create" component={Create} />
-                   {/* <Route path="/login" component={Login} /> */}
-                </Switch> 
+                   <Route path="/current" render={props => {
+                        if (!user){
+                            return <Redirect to="/login" />;
+                        } else {
+                            return <Current {...props} user={user} />
+                        }
+                        }}  />
+                   <Route path="/calendar" render={props => {
+                        if (!user){
+                            return <Redirect to="/login" />;
+                        } else {
+                            return <Calendar {...props} user={user} />
+                        }
+                        }}  />
+                   <Route path="/create" render={props => {
+                        if (!user){
+                            return <Redirect to="/login" />;
+                        } else {
+                            return <Create {...props} user={user} />
+                        }
+                        }} 
+                    />
+                   <Route path="/login" component={Login} />
+                </Switch>
+                
                 
             </div>
         )
