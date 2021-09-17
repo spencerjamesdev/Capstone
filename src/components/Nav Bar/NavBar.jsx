@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import "./NavBar.css"
 
 
+
 class NavBar extends Component {
 
     render() {
@@ -13,17 +14,17 @@ class NavBar extends Component {
                     <Link to="/home">
                         <h1 className="navbar-item">Friendly Reminder</h1>
                     </Link>
-                    <Link to="/current">
-                        <p className="navbar-item">Current</p>
+                    <Link to="/todaysreminders">
+                        <p className="navbar-item">Today's Reminders</p>
                     </Link>
                     <Link to="/calendar">
                         <p className="navbar-item">Calendar</p>
                     </Link>
-                    <Link to="/create">
-                        <p className="navbar-item">Create</p>
+                    <Link to="/profile">
+                        <p className="navbar-item">Profile</p>
                     </Link>
                     <Link to="/login">
-                        <p className="navbar-item">Login</p>
+                        <p className="navbar-item">Login/Logout</p>
                     </Link>
                 </div>
             

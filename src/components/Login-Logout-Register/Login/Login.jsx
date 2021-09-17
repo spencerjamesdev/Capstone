@@ -25,28 +25,21 @@ class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         };
+        this.loginFunction(user_data)
         
-        axios.post('http://127.0.0.1:8000/api/auth/login/', user_data)
-            .then(user => {
-                localStorage.setItem('token', user.data.access);
-                console.log(user.data.access)
-            })
-            .catch(error => {
-                console.log(error)
-            })
+    }
+
+    async loginFunction(user_data) {
+        let response = await axios.post('http://127.0.0.1:8000/api/auth/login/', user_data)
+        localStorage.setItem('token', response.data.access)
+        console.log(response.data.access)
         console.log(this.state.username)
         console.log(this.state.password)
+        console.log(localStorage.getItem('token'))
         window.location = '/home';
     }
 
-    // async userLogin(user_data){
-    //     let response = await axios.post('http://127.0.0.1:8000/api/auth/login/', user_data)
-    //     localStorage.setItem('token', response.data.token);
-    //     console.log(this.state.username)
-    //     console.log(this.state.password)
-    //     console.log(response.data.token)
-    //     window.location = 'current/';
-    // }
+    
 
     render() {
         return (
@@ -59,6 +52,7 @@ class Login extends React.Component {
 
                 <button type="submit">Login</button>
             </form>
+            
         )
     }
 }

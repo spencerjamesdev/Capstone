@@ -3,16 +3,20 @@ import './App.css';
 import NavBar from './Nav Bar/NavBar';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from './Home/Home';
-import Create from './Create/Create';
-import Login from './Login/Login';
-import Current from './Current/Current';
+import Profile from './Profile/Profile';
+import TodaysReminders from './Todays Reminders/TodaysReminders';
 import Calendar from './Calendar/Calendar';
 import jwtDecode from 'jwt-decode'
 import axios from 'axios';
+import LoginPage from './Login-Logout-Register/LoginPage';
+import RegisterForm from './Login-Logout-Register/RegisterForm/RegisterForm';
 
 
 class App extends Component {
-    state = { }
+    constructor(props) {
+        super(props);
+        this.state = { }
+    }
 
     componentDidMount() {
         
@@ -21,6 +25,7 @@ class App extends Component {
         console.log(jwt)
         try{
             const user = jwtDecode(jwt);
+            console.log(user);
             this.setState({user}, () => console.log(this.state))
         } catch (err) {
             console.log(err)
@@ -30,36 +35,44 @@ class App extends Component {
     render(){
         const user = this.state.user;
         return (
-            <div className="container-fluid">
-                <NavBar user={user}/>
-                <Switch>
-                   <Route path="/home" exact component={Home} />
-                   <Route path="/current" render={props => {
-                        if (!user){
-                            return <Redirect to="/login" />;
-                        } else {
-                            return <Current {...props} user={user} />
-                        }
-                        }}  />
-                   <Route path="/calendar" render={props => {
-                        if (!user){
-                            return <Redirect to="/login" />;
-                        } else {
-                            return <Calendar {...props} user={user} />
-                        }
-                        }}  />
-                   <Route path="/create" render={props => {
-                        if (!user){
-                            return <Redirect to="/login" />;
-                        } else {
-                            return <Create {...props} user={user} />
-                        }
-                        }} 
-                    />
-                   <Route path="/login" component={Login} />
-                </Switch>
-                
-                
+            <div>
+                <div className="container-fluid">
+                    <NavBar user={user}/>
+                    <Switch>
+                        <Route path="/home" render={props => {
+                            if (!user){
+                                return <Redirect to="/login" />;
+                            } else {
+                                return <Home {...props} user_id={user.user_id} />
+                            }
+                            }}  />
+                    <Route path="/todaysreminders" render={props => {
+                            if (!user){
+                                return <Redirect to="/login" />;
+                            } else {
+                                return <TodaysReminders {...props} user={user} />
+                            }
+                            }}  />
+                    <Route path="/calendar" render={props => {
+                            if (!user){
+                                return <Redirect to="/login" />;
+                            } else {
+                                return <Calendar {...props} user={user} />
+                            }
+                            }}  />
+                    <Route path="/profile" render={props => {
+                            if (!user){
+                                return <Redirect to="/login" />;
+                            } else {
+                                return <Profile {...props} user_id={user.user_id} />
+                            }
+                            }} 
+                        />
+                    <Route path="/login" component={LoginPage} />
+                    <Route path='/register' component={RegisterForm} />
+                    </Switch>
+                    
+                </div>
             </div>
         )
     }

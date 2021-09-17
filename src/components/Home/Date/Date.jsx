@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 
 
-
-class Clock extends React.Component {
+class Date extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { date: new Date() };
+        //this.state = { date: new Date() };
     }
 
 
@@ -14,7 +14,7 @@ class Clock extends React.Component {
     render() {
         return (
             <div>
-                {this.state.date.toLocaleDateString(undefined, options)}
+                {moment(new Date()).format("MMM Do YYYY")}
             </div>
         )
     }
