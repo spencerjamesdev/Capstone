@@ -1,8 +1,11 @@
-.center {
-    margin: auto;
+.homebackdrop {
+    margin-top: 50px;
     width: 50%;
-    border: 3px solid rgb(80, 141, 165);
+    border: 15px solid #628C67;
     padding: 10px;
     background-color: rgb(211, 167, 110);
-    text-align: center;
   }
+
+.font{
+    font-family: "Papyrus", fantasy;
+}

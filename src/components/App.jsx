@@ -10,16 +10,24 @@ import jwtDecode from 'jwt-decode'
 import axios from 'axios';
 import LoginPage from './Login-Logout-Register/LoginPage';
 import RegisterForm from './Login-Logout-Register/RegisterForm/RegisterForm';
+import moment from 'moment';
 
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { }
+        this.state = {
+
+        }
     }
 
     componentDidMount() {
+        this.getUserToken();
         
+        
+    }
+
+    getUserToken() {
         const jwt = localStorage.getItem('token');
     
         console.log(jwt)
@@ -30,13 +38,13 @@ class App extends Component {
         } catch (err) {
             console.log(err)
         }
-        
     }
+    
     render(){
         const user = this.state.user;
         return (
             <div>
-                <div className="container-fluid">
+                <div>
                     <NavBar user={user}/>
                     <Switch>
                         <Route path="/home" render={props => {

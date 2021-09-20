@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import "./RegisterForm.css"
 
 
 class RegisterForm extends React.Component {
@@ -43,26 +44,27 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-                <h3>Create New User:</h3>
-                <label for="username">Username: </label>
-                <input type="text" name="username" onChange={(event) => this.handleChange(event)} value={this.state.username}/><br></br>
-                
-                <label for="password">Password: </label>
-                <input type="text" name="password" onChange={(event) => this.handleChange(event)} value={this.state.password}/><br></br>
+            <div className="registerbackdrop center font">
+                <form onSubmit={(event) => this.handleSubmit(event)}>
+                    <h3>Create New User:</h3>
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" onChange={(event) => this.handleChange(event)} value={this.state.username}/><br></br>
+                    
+                    <label for="password">Password: </label>
+                    <input type="text" name="password" onChange={(event) => this.handleChange(event)} value={this.state.password}/><br></br>
 
-                <label for="email">Email: </label>
-                <input type="text" name="email" onChange={(event) => this.handleChange(event)} value={this.state.email}/><br></br>
+                    <label for="email">Email: </label>
+                    <input type="text" name="email" onChange={(event) => this.handleChange(event)} value={this.state.email}/><br></br>
 
-                <label for="first_name">First Name: </label>
-                <input type="text" name="first_name" onChange={(event) => this.handleChange(event)} value={this.state.first_name}/><br></br>
+                    <label for="first_name">First Name: </label>
+                    <input type="text" name="first_name" onChange={(event) => this.handleChange(event)} value={this.state.first_name}/><br></br>
 
-                <label for="last_name">Last Name: </label>
-                <input type="text" name="last_name" onChange={(event) => this.handleChange(event)} value={this.state.last_name}/><br></br>
+                    <label for="last_name">Last Name: </label>
+                    <input type="text" name="last_name" onChange={(event) => this.handleChange(event)} value={this.state.last_name}/><br></br>
 
-                <button type="submit">Add User</button>
-            </form>
+                    <button type="submit">Add User</button>
+                </form>
+            </div>
         )
     }
 }

@@ -32,7 +32,7 @@ export default class Home extends Component {
     
     render() {
         return (
-            <div className="center">
+            <div className="centertext center homebackdrop font">
                 <h1>Hello, {this.state.current_user.first_name}</h1><br></br>
                 <h4>Current Time:</h4>
                 <Clock />

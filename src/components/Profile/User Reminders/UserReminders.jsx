@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Reminder from '../../Todays Reminders/Reminder/Reminder';
+import ReminderProf from './ReminderProf/ReminderProf';
+import "./UserReminders.css"
 
 
 export default class UserReminders extends Component {
@@ -38,21 +39,18 @@ export default class UserReminders extends Component {
 
     render() {
         return (
-            <div>
+            <div className='reminderprofbackdrop right font'>
                 <h3>All Reminders</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Recurrence</th>
-                            <th>Day</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                <table className="proftablecenter">
+                        <tr className="trtableandhead">
+                            <th className="trtableandhead">Name</th>
+                            <th className="trtableandhead">Description</th>
+                            <th className="trtableandhead">Recurrence</th>
+                            <th className="trtableandhead">Day</th>
+                            <th className="trtableandhead">Delete</th>
                         </tr>
-                    </thead>
                     {this.state.user_reminders.map(reminder =>
-            <Reminder key={reminder.id} reminder={reminder} />
+            <ReminderProf key={reminder.id} reminder={reminder} />
             )}
                 </table>
             </div>

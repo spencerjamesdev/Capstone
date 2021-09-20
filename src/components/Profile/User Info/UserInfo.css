@@ -2,18 +2,13 @@
     position: absolute;
     left: 20px;
     padding: 10px;
-}
+  }
   
-.createbackdrop {
-    margin-top: 260px;
-    width: 35%;
+  .userinfobackdrop {
+    margin-top: 10px;
+    width: 40%;
     border: 15px solid #628C67;
-    padding: 20px;
+    padding: 10px;
     background-color: rgb(211, 167, 110);
-    text-align: right;
-}
-
-.title {
     text-align: center;
 }
-

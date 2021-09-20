@@ -1,17 +1,15 @@
 import React from 'react';
+import moment from 'moment';
+import "./Reminder.css"
 
 const Reminder = (props) => {
     return (
-        <tbody>
-            <tr>
-                <td>{props.reminder.name}</td>
-                <td>{props.reminder.description}</td>
-                <td>{props.reminder.recurrence}</td>
-                <td>{props.reminder.day}</td>
-                <td><button>Update</button></td>
-                <td><button>Delete</button></td>
+            <tr className="trandtd">
+                <td className="trandtd">{props.reminder.name}</td>
+                <td className="trandtd">{props.reminder.description}</td>
+                <td className="trandtd">{moment(props.reminder.day).format("MMM Do YYYY")}</td>
+                <td className="trandtd"><button>Completed</button></td>
             </tr>
-        </tbody>
     );
 }
 

@@ -1,0 +1,15 @@
+.loginbackdrop {
+    margin-top: 10%;
+    width: 50%;
+    border: 15px solid #628C67;
+    padding: 10px;
+    background-color: rgb(211, 167, 110);
+  }
+
+.loginpagecenter {
+    margin: auto;
+    margin-top: 20px;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}

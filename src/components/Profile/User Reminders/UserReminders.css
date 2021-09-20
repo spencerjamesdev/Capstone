@@ -1,0 +1,23 @@
+.right {
+    position: absolute;
+    right: 20px;
+    width: 50%;
+    padding: 10px;
+  }
+  
+  .reminderprofbackdrop {
+    margin-top: 10px;
+    width: 50%;
+    border: 15px solid #628C67;
+    padding: 10px;
+    background-color: rgb(211, 167, 110);
+    text-align: center;
+}
+
+.proftablecenter {
+    margin: auto;
+    width: 75%;
+    padding: 10px;
+    text-align: center;
+    table-layout: fixed;
+  }

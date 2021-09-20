@@ -14,7 +14,7 @@ class Register extends React.Component {
 
     render() {
         return(
-            <button onClick={()=>this.registerFunction()}>Register New User</button>
+            <button onClick={()=>this.registerFunction()}>Register New User</button> 
         )
     }
 }

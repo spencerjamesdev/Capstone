@@ -3,6 +3,9 @@
     flex-direction: row;
     background-color: tan;
     width: 100%;
+    align-items: center;
+    text-decoration: none;
+    font-family: "Copperplate", fantasy;
 }
 
 .navbar-item {
@@ -11,7 +14,7 @@
     align-items: center;
     margin-left: 30px;
     margin-right: 30px;
-    color: inherit;
+    color: #628C67;
     text-decoration: inherit;
     text-transform: uppercase;
     outline: none;

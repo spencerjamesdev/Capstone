@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import "./Login.css"
 
 
 class Login extends React.Component {
@@ -30,29 +31,39 @@ class Login extends React.Component {
     }
 
     async loginFunction(user_data) {
-        let response = await axios.post('http://127.0.0.1:8000/api/auth/login/', user_data)
-        localStorage.setItem('token', response.data.access)
-        console.log(response.data.access)
-        console.log(this.state.username)
-        console.log(this.state.password)
-        console.log(localStorage.getItem('token'))
-        window.location = '/home';
+        
+        try{
+            let response = await axios.post('http://127.0.0.1:8000/api/auth/login/', user_data)
+            localStorage.setItem('token', response.data.access)
+            console.log(response.data.access)
+            console.log(this.state.username)
+            console.log(this.state.password)
+            console.log(localStorage.getItem('token'))
+            localStorage.getItem('token');
+            window.location = '/home';
+        }
+        catch {error}{
+        console.log(error)
+
+        }
+
     }
 
     
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label for="username">Username: </label>
-                <input type="text" name="username" onChange={this.handleChange} value={this.state.username}/><br></br>
-                
-                <label for="password">Password: </label>
-                <input type="password" name="password" onChange={this.handleChange} value={this.state.password}/><br></br>
+            <div className="center">
+                <form onSubmit={this.handleSubmit}>
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" onChange={this.handleChange} value={this.state.username}/><br></br><br></br>
+                    
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" onChange={this.handleChange} value={this.state.password}/><br></br><br></br>
 
-                <button type="submit">Login</button>
-            </form>
-            
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         )
     }
 }

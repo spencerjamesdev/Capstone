@@ -1,26 +1,34 @@
+import axios from 'axios';
 import React, { Component } from 'react';
+import "./Create.css"
 
 
 class Create extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            reminder_name: '',
-            reminder_description: '',
+            name: '',
+            description: '',
             recurrence: '',
-            start_date: ''
+            day: ''
         }
     }
 
     handleSubmit(event) {
         event.preventDefault();
 
-        let new_user = {
-            reminder_name: this.state.reminder_name,
-            reminder_description: this.state.reminder_description,
+        let new_reminder = {
+            name: this.state.reminder_name,
+            description: this.state.reminder_description,
             recurrence: this.state.recurrence,
-            start_date: this.state.start_date
+            day: this.state.start_date
         }
+
+        console.log(new_reminder)
+
+        const jwt = localStorage.getItem('token')
+        axios.post('http://127.0.0.1:8000/api/reminders/', new_reminder, {headers: {Authorization: 'Bearer ' + jwt}})
+        window.location = '/profile'
     }
 
     handleChange(event){
@@ -33,23 +41,24 @@ class Create extends React.Component {
 
     render() {
         return (
-            
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-                <h3>Create New Reminder:</h3>
-                <label for="reminder_name">Reminder Name: </label>
-                <input type="text" name="reminder_name" onChange={(event) => this.handleChange(event)} value={this.state.reminder_name}/><br></br>
-                
-                <label for="reminder_description">Reminder Description: </label>
-                <input type="text" name="reminder_description" onChange={(event) => this.handleChange(event)} value={this.state.reminder_description}/><br></br>
+            <div className="createbackdrop font">
+                <form  onSubmit={(event) => this.handleSubmit(event)}>
+                    <h3 className='title'>Create New Reminder:</h3><br></br>
+                    <label className='labels' for="reminder_name">Name: </label>
+                    <input className='inputs' type="text" name="reminder_name" onChange={(event) => this.handleChange(event)} value={this.state.reminder_name}/><br></br>
+                    
+                    <label for="reminder_description">Description: </label>
+                    <input type="text" name="reminder_description" onChange={(event) => this.handleChange(event)} value={this.state.reminder_description}/><br></br>
 
-                <label for="recurrence">Recurrence: </label>
-                <input type="number" min="0" name="recurrence" onChange={(event) => this.handleChange(event)} value={this.state.recurrence}/><br></br>
+                    <label for="recurrence">Recurrence (Every __ days): </label>
+                    <input type="number" min="0" name="recurrence" onChange={(event) => this.handleChange(event)} value={this.state.recurrence}/><br></br>
 
-                <label for="start_date">Start Date: </label>
-                <input type="date" name="start_date" onChange={(event) => this.handleChange(event)} value={this.state.start_date}/><br></br>
+                    <label for="start_date">Start Date: </label>
+                    <input type="date" name="start_date" onChange={(event) => this.handleChange(event)} value={this.state.start_date}/><br></br><br></br>
 
-                <button type="submit">Add Reminder</button>
-            </form>
+                    <button type="submit">Add Reminder</button>
+                </form>
+            </div>
         )
     }
 }
