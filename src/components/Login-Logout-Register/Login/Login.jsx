@@ -40,7 +40,7 @@ class Login extends React.Component {
             console.log(this.state.password)
             console.log(localStorage.getItem('token'))
             localStorage.getItem('token');
-            window.location = '/home';
+            window.location = '/';
         }
         catch {error}{
         console.log(error)

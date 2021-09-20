@@ -11,7 +11,7 @@ class NavBar extends Component {
         return (
             <nav>
                 <div className="navbar">
-                    <Link to="/home" style={{ textDecoration: 'none' }}>
+                    <Link to="/" style={{ textDecoration: 'none' }}>
                         <h1 className="navbar-item" >Friendly Reminder</h1>
                     </Link>
                     <Link to="/todaysreminders">

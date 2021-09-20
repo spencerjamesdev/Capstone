@@ -8,7 +8,7 @@ const Reminder = (props) => {
                 <td className="trandtd">{props.reminder.name}</td>
                 <td className="trandtd">{props.reminder.description}</td>
                 <td className="trandtd">{moment(props.reminder.day).format("MMM Do YYYY")}</td>
-                <td className="trandtd"><button>Completed</button></td>
+                <td className="trandtd"><input type="checkbox"></input></td>
             </tr>
     );
 }

@@ -13,6 +13,7 @@ import RegisterForm from './Login-Logout-Register/RegisterForm/RegisterForm';
 import moment from 'moment';
 
 
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ class App extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.getUserToken();
         
         
@@ -42,12 +43,14 @@ class App extends Component {
     
     render(){
         const user = this.state.user;
+        
         return (
             <div>
                 <div>
                     <NavBar user={user}/>
+                    
                     <Switch>
-                        <Route path="/home" render={props => {
+                        <Route exact path="/" render={props => {
                             if (!user){
                                 return <Redirect to="/login" />;
                             } else {

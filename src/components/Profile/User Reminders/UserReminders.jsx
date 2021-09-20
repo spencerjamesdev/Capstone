@@ -47,6 +47,7 @@ export default class UserReminders extends Component {
                             <th className="trtableandhead">Description</th>
                             <th className="trtableandhead">Recurrence</th>
                             <th className="trtableandhead">Day</th>
+                            {/* <th className="trtableandhead">Update</th> */}
                             <th className="trtableandhead">Delete</th>
                         </tr>
                     {this.state.user_reminders.map(reminder =>
