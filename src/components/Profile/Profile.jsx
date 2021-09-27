@@ -29,7 +29,7 @@ class Profile extends React.Component {
     render() {
         const current_user = this.state.current_user;
         return (
-            <div className="float-container">
+            <div className="float-container bgprofile">
                 
                 <div className="float-child">
                     <UserInfo current_user={current_user} />

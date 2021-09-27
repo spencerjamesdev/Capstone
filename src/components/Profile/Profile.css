@@ -1,5 +1,5 @@
 .float-container {
-    border: 3px solid #fff;
+    
     padding: 20px;
 }
 
@@ -9,3 +9,7 @@
     padding: 5px;
     
 }  
+
+.bgprofile {
+    background-color: bisque;
+}

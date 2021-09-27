@@ -24,7 +24,7 @@ class App extends Component {
 
     componentWillMount() {
         this.getUserToken();
-        
+        console.log()
         
     }
 
@@ -40,6 +40,7 @@ class App extends Component {
             console.log(err)
         }
     }
+    
     
     render(){
         const user = this.state.user;
@@ -57,21 +58,21 @@ class App extends Component {
                                 return <Home {...props} user_id={user.user_id} />
                             }
                             }}  />
-                    <Route path="/todaysreminders" render={props => {
+                        <Route path="/todaysreminders" render={props => {
                             if (!user){
                                 return <Redirect to="/login" />;
                             } else {
                                 return <TodaysReminders {...props} user={user} />
                             }
                             }}  />
-                    <Route path="/calendar" render={props => {
+                        <Route path="/calendar" render={props => {
                             if (!user){
                                 return <Redirect to="/login" />;
                             } else {
                                 return <Calendar {...props} user={user} />
                             }
                             }}  />
-                    <Route path="/profile" render={props => {
+                        <Route path="/profile" render={props => {
                             if (!user){
                                 return <Redirect to="/login" />;
                             } else {
@@ -79,8 +80,8 @@ class App extends Component {
                             }
                             }} 
                         />
-                    <Route path="/login" component={LoginPage} />
-                    <Route path='/register' component={RegisterForm} />
+                        <Route path="/login" component={LoginPage} />
+                        <Route path='/register' component={RegisterForm} />
                     </Switch>
                     
                 </div>
